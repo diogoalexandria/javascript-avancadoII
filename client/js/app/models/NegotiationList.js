@@ -12,6 +12,6 @@ class NegotiationList {
 
     get negotiations() {
 
-        return [].concat(this._negotiations); //programação defensiva com array. Criando cópia da lista! 
+        return [].concat(this._negotiations); //Programação defensiva com array. Criando cópia da lista! 
     }
 }

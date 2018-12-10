@@ -4,9 +4,9 @@ class Negotiation {
         console.log("Dentro do construtor Negotiation: ");
         console.log(date);
         console.log(typeof(date));
-        //console.log(date.getTime());
-        this._date = new Date(date[0], date[1], date[2]);//programação defensiva.
-        //this._date = new Date(date.getTime());//programação defensiva. Não funciona, descobrir pq!
+        console.log(date.getTime());
+        //this._date = new Date(date[0], date[1], date[2]);//programação defensiva.Solução dada quando o textToDate não estava retornando um objteto Date.
+        this._date = new Date(date.getTime());//programação defensiva. Não funciona, descobrir pq! textToDate() não estava retornando um objeto Date. resolvido!
         this._quantity = quantity;
         this._value = value;
         Object.freeze(this);

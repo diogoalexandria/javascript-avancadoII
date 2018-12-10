@@ -6,27 +6,33 @@ class NegotiationController {
         this._inputQuantity = $('#quantidade');
         this._inputValue = $('#valor');
         this._negotiationsList = new NegotiationList();
-        this._negotiationsView = new NegotiationsView($('#negotiationsView'));
+        this._negotiationsView = new NegotiationsViews($('#negotiationsView'));
+        this._message = new Message();
+        this._messageView = new MessageView($('#messageView'));
 
         this._negotiationsView.update(this._negotiationsList);
+        console.log(this._message);
+        
+        this._messageView.update(this._message);
     }
 
     add(event){
-        event.preventDefault();             
+        event.preventDefault();              
         
         let negotiation = this._createNegotiation();
         
-        //console.log(date);
         console.log(negotiation.date);     
         console.log(negotiation);
 
         console.log("Data formatada: " + DateHelper.dateToText(negotiation.date));
 
         this._negotiationsList.add(negotiation);
+        this._message.text = 'Negociação adicionada com sucesso!';
+        this._messageView.update(this._message);
         console.log(this._negotiationsList.negotiations);
 
-        this._negotiationsView.update(this._negotiationsList);
-        this._cleanForm(); //Limpa o formulário apos adicionar uma negociação.
+        this._negotiationsView.update(this._negotiationsList);//Atualiza o formulário com a nova lista de negociações.
+        this._cleanForm(); //Limpa o formulário após adicionar uma negociação.
     }
 
     _createNegotiation() {
